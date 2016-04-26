@@ -144,7 +144,7 @@ class Meter(tk.Canvas):
         # convert value to range 0,100
         needle_range = 300 #degrees
         needle_start = needle_range/2 + 90 #degrees, 0 is horizontal right, ccw positive
-        deg = needle_range*(value - self.start)/self.range - needle_start
+        deg = needle_range*(value - float(self.start))/self.range - needle_start
         
         self.itemconfigure(self.textid,text = str(value))
         rad = math.radians(deg)
@@ -155,8 +155,3 @@ class Meter(tk.Canvas):
     def blob(self,colour):
         # call this to change the colour of the blob
         self.itemconfigure(self.blobid,fill = colour,outline = colour)
-        
-#If this script is executed, just run the main script
-if __name__ == '__main__':
-    import os
-    os.system("gauges_main.pyw")
